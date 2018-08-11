@@ -1,0 +1,10 @@
+body {
+
+    font-family: "Times New Roman", Times, serif;
+    background-image: url("/img/wave.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ff71ce;
+}

@@ -1,0 +1,61 @@
+.container{
+  color: #ff71ce;
+}
+
+.title {
+  margin-left: 25px;
+  display: inline-block;
+  font-size: 4em;  
+  font-weight: lighter;                       
+}
+
+p {
+  letter-spacing: 6px;
+  font-weight: lighter;
+  color:  #50d8ec;
+}
+
+.crbn{
+animation: App-logo-spin infinite 10s linear;
+background-color: #FF6AD5;
+margin:0px 0px 0px 0px;
+padding: 0 0 0 0;
+}
+
+
+
+.crbnimg {
+  margin:0 0 0 0;
+  width: 100%;
+  opacity: .3;
+}
+
+.crbn img:hover {
+    opacity: 1;
+}
+
+.about {
+  padding-top: 15px;
+  line-height: 20%;
+}
+
+.victory {
+  position: relative;
+  font-family: 'Permanent Marker', cursive;
+  font-variant:small-caps;
+  font-size: 180px;
+  -webkit-transform: skew(-15deg,-15deg);
+  padding-left: 80px;
+  background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 15px 0 15px 0;
+  -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
