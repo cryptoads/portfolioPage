@@ -371,7 +371,7 @@ github(){
                 <div className="console2" style={{opacity: this.state.newCmdVis}}>
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-                    My Github: <a href="https://github.com/cryptoads" target="_blank"><i class="fab fa-2x fa-github"></i> </a>
+                    My Github: <a href="https://github.com/cryptoads" target="_blank"><i className="fab fa-2x fa-github"></i> </a>
                     </Typist>
 
                     : <div className="col-lg-4 col-md-12"><div className="console2" style={{opacity: 0}}></div></div>}
@@ -380,7 +380,7 @@ github(){
                 {this.state.github ?
                     <div >
                     <Typist>
-                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank"><i class="fab fa-2x fa-twitter-square"></i> </a>
+                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank"><i className="fab fa-2x fa-twitter-square"></i> </a>
                     </Typist>
                     </div>
 
