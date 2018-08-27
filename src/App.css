@@ -1,61 +1,158 @@
-.container{
-  color: #ff71ce;
-}
-
-.title {
+/*.title {
   margin-left: 25px;
-  display: inline-block;
+  display: flex;
   font-size: 4em;  
   font-weight: lighter;                       
-}
+}*/
 
-p {
+/*p {
   letter-spacing: 6px;
   font-weight: lighter;
   color:  #50d8ec;
 }
-
-.crbn{
-animation: App-logo-spin infinite 10s linear;
-background-color: #FF6AD5;
-margin:0px 0px 0px 0px;
-padding: 0 0 0 0;
+*/
+.container{
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
-
-
-.crbnimg {
-  margin:0 0 0 0;
+.projHolder{
+  visibility: hidden;
+  transition: 2s ease;
   width: 100%;
-  opacity: .3;
 }
 
-.crbn img:hover {
-    opacity: 1;
+.image{
+  width: 100%;
+  margin: 4px 5px 5px 5px;
+/*  visibility: hidden;*/
 }
 
-.about {
-  padding-top: 15px;
-  line-height: 20%;
+
+.console {
+
+  letter-spacing: 6px;
+  width: 650px;
+  height: 350px;
+  background-color: black;
+  border: 2px solid gray;
+  opacity: .8;
+  overflow-y: auto;
+  color: white;
+  border-top: 15px solid gray;
 }
+
+
+.console2 {
+
+  letter-spacing: 6px;
+  width: 650px;
+  height: 350px;
+  background-color: black;
+  border: 2px solid gray;
+  opacity: 0;
+  overflow-y: auto;
+  color: white;
+  border-top: 15px solid gray;
+}
+
 
 .victory {
-  position: relative;
+  transition: 1.5s ease;
+  min-width: 500px;
+  font-weight: lighter; 
+  opacity: 0;
   font-family: 'Permanent Marker', cursive;
   font-variant:small-caps;
-  font-size: 180px;
-  -webkit-transform: skew(-15deg,-15deg);
-  padding-left: 80px;
+  font-size:8em;
+  word-spacing: 0px;
+  -webkit-transform: skew(-10deg,-10deg);
   background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 15px 0 15px 0;
   -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+  overflow: auto;
+}
+
+.imgContain {
+ min-height: 300px;
+}
+
+.imgContain:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;
+}
+
+.code {
+font-family: Gill Sans Extrabold, sans-serif;
+}
+
+.keyColor{
+  font-family: Gill Sans Extrabold, sans-serif;
+  color: #f008b7;
+}
+.generic {
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+.indent {
+  margin-left: 30px;
 }
 
 
+.Typist .Cursor {
+  display: inline-block; }
+  .Typist .Cursor--blinking {
+    opacity: 1;
+    animation: blink 1s linear infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    50% {opacity: .4;
+    }
+    100% {
+      opacity: .8;
+    }
+  }
