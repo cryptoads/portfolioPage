@@ -329,8 +329,8 @@ github(){
                         <div className="row justify-content-center">
 
                         <div className="col-lg-4 col-md-12 mt-5 imgContain">
-                        <img src="/img/crbn.png" className="image" />
-                        <a href="https://crbnapp.herokuapp.com" target="_blank"> 
+                        <img src="/img/crbn.png" className="image" alt="" />
+                        <a href="https://crbnapp.herokuapp.com" target="_blank" rel="noopener noreferrer"> 
                         <div className="overlay">
                             <div className="text">
                             <p>CRBN</p>
@@ -341,10 +341,10 @@ github(){
                         </div>
 
                         <div className="col-lg-4 col-md-12 mt-5 media imgContain">
-                        <img src="/img/tagged.png" className="image align-self-end" />
+                        <img src="/img/tagged.png" className="image align-self-end" alt="" />
                         
                         <div className="overlay">
-                           <a href="https://taggedapp.herokuapp.com" target="_blank">  <div className="text">
+                           <a href="https://taggedapp.herokuapp.com" target="_blank" rel="noopener noreferrer">  <div className="text">
                             <p>Tagged</p>
                             <p>An app that gives your car an Inbox.  Messaging system using license plate numbers.</p>
                             <p>Built with HTML/CSS/NodeJS/Sequelize/Postgres/Express/AuthJS</p>
@@ -353,8 +353,8 @@ github(){
                         </div>
 
                         <div className="col-lg-4 col-md-12 mt-5 imgContain">
-                        <img src="/img/cryptoPulse.png" className="image " />
-                        <a href="https://eloquent-khorana-9548ca.netlify.com/index.html" target="_blank"> 
+                        <img src="/img/cryptoPulse.png" className="image " alt="" />
+                        <a href="https://eloquent-khorana-9548ca.netlify.com/index.html" target="_blank" rel="noopener noreferrer"> 
                         <div className="overlay">
                             <div className="text">
                             <p>CryptoPulse</p>
@@ -371,7 +371,7 @@ github(){
                 <div className="console2" style={{opacity: this.state.newCmdVis}}>
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-                    My Github: <a href="https://github.com/cryptoads" target="_blank"><i className="fab fa-2x fa-github"></i> </a>
+                    My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                     </Typist>
 
                     : <div className="col-lg-4 col-md-12"><div className="console2" style={{opacity: 0}}></div></div>}
@@ -380,7 +380,7 @@ github(){
                 {this.state.github ?
                     <div >
                     <Typist>
-                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
                     </Typist>
                     </div>
 
