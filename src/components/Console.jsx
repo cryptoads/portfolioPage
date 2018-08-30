@@ -125,12 +125,12 @@ github(){
     return (
 
        <div className="container-fluid">
-       <div className="row">
-            <div className="col-lg-7 col-md-12">
+       <div className="row justify-content-between">
+            <div className="col-lg-6 col-md-12 ml-auto">
                 <h1 className="victory" style={this.state.showName}><code> Chris Michels</code></h1>
             </div>
-            <div className="col-lg-4 col-md-12">
-            <div className="console mt-5" id="MyDivElement">
+            <div className="col-lg-5 col-md-12 mt-5 mr-auto ">
+            <div className="console " id="MyDivElement">
 
 
 
@@ -204,7 +204,7 @@ github(){
                 {this.state.location ? 
                     <div className="code generic"  style={{color: this.state.color}}> 
                         <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.skillJson.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span>locaction:</span><span className="keyColor"> 'Atlanta, GA',</span>
+                        <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
                         <br />
                         </Typist>
                     </div>
@@ -294,7 +294,6 @@ github(){
                         <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.endLine.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <span className="indent">}</span>
                         <br />
-                        <span>}</span>
                         </Typist>
                     </div>
 
@@ -302,9 +301,9 @@ github(){
                 {this.state.endLine ? 
                     <div className="code generic"  style={{color: this.state.color}}> 
                         <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.nextCmd.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
+                        <span>}</span>
                         <br />
                         <span style={{color: "white"}}>start contact.cmd</span>
-                        <br />
                         </Typist>
                     </div>
 
@@ -324,8 +323,8 @@ github(){
                 </div>
 
              
-            <div className="row mt-4">
-                        <div className="col-lg-7 col-md-12 col-sm-12 projHolder" style={this.state.projHolder}>
+            <div className="row mt-5 justify-content-between">
+                        <div className="col-lg-6 col-md-12 col-sm-12 ml-auto projHolder" style={this.state.projHolder}>
                         <div className="row justify-content-center">
 
                         <div className="col-lg-4 col-md-12 mt-5 imgContain">
@@ -367,14 +366,14 @@ github(){
 
                         </div>
                         </div>
-                <div className="col-lg-4 col-md-12">
+                <div className="col-lg-5 col-md-12 mr-auto">
                 <div className="console2" style={{opacity: this.state.newCmdVis}}>
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                     </Typist>
 
-                    : <div className="col-lg-4 col-md-12"><div className="console2" style={{opacity: 0}}></div></div>}
+                    : <div className="col-lg-5 col-md-12 mr-auto"><div className="console2" style={{opacity: 0}}></div></div>}
 
  
                 {this.state.github ?
