@@ -125,7 +125,7 @@ github(){
     return (
 
        <div className="container-fluid">
-       <div className="row justify-content-between">
+       <div className="row justify-content-between mb-5 toprow">
             <div className="col-lg-6 col-md-12 ml-auto">
                 <h1 className="victory" style={this.state.showName}><code> Chris Michels</code></h1>
             </div>
@@ -323,7 +323,7 @@ github(){
                 </div>
 
              
-            <div className="row mt-5 justify-content-between">
+            <div className="row mt-5 mb-3 justify-content-between bottomrow">
                         <div className="col-lg-6 col-md-12 col-sm-12 ml-auto projHolder" style={this.state.projHolder}>
                         <div className="row justify-content-center">
 
