@@ -323,7 +323,7 @@ github(){
                 </div>
 
              
-            <div className="row mt-5 mb-3 justify-content-between bottomrow">
+            <div className="row mb-3 mt-5 justify-content-between">
                         <div className="col-lg-6 col-md-12 col-sm-12 ml-auto projHolder" style={this.state.projHolder}>
                         <div className="row justify-content-center">
 
@@ -366,14 +366,15 @@ github(){
 
                         </div>
                         </div>
-                <div className="col-lg-5 col-md-12 mr-auto">
-                <div className="console2" style={{opacity: this.state.newCmdVis}}>
+                <div className="col-lg-5 col-md-12 mr-auto " id="f1_container">
+                <div id="f1_card">
+                <div className="console2 face" style={{opacity: this.state.newCmdVis}} >
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                     </Typist>
 
-                    : <div className="col-lg-5 col-md-12 mr-auto"><div className="console2" style={{opacity: 0}}></div></div>}
+                    : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
 
  
                 {this.state.github ?
@@ -384,6 +385,8 @@ github(){
                     </div>
 
                     : ""}
+                 <div className="back"><p>this</p></div>   
+                </div>
                 </div>
                 </div>
 
