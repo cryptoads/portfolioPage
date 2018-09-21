@@ -385,8 +385,9 @@ github(){
                     </div>
 
                     : ""}
-                 <div className="back"><p>this</p></div>   
+
                 </div>
+                <div className="back face" style={{opacity: this.state.newCmdVis}}><img src="/img/cryptoPulse.png" className="image " alt="" /></div>   
                 </div>
                 </div>
 
