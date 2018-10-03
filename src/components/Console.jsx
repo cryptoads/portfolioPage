@@ -29,8 +29,9 @@ class Console extends Component {
       react: false,
       brack: false,
       endLine: false,
-    github: false,
+      github: false,
       projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
+      aboutme: "console2",
      
     }
   }
@@ -112,6 +113,9 @@ github(){
     this.setState({github:true})
 }
 
+aboutMe(){
+    this.setState({aboutme: "f1_container"})
+}
 
 
 
@@ -366,9 +370,9 @@ github(){
 
                         </div>
                         </div>
-                <div className="col-lg-5 col-md-12 mr-auto " id="f1_container">
+                <div className="col-lg-5 col-md-12 mr-auto " id={this.state.aboutme}>
                 <div id="f1_card">
-                <div className="console2 face" style={{opacity: this.state.newCmdVis}} >
+                <div className="face console2" style={{opacity: this.state.newCmdVis}} >
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
@@ -381,6 +385,7 @@ github(){
                     <div >
                     <Typist>
                     My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    About me: <span onClick={this.aboutMe.bind(this)}> here </span>
                     </Typist>
                     </div>
 
