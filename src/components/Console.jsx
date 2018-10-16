@@ -385,6 +385,7 @@ aboutMe(){
                     <div >
                     <Typist>
                     My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    <br />
                     About me: <span onClick={this.aboutMe.bind(this)}> here </span>
                     </Typist>
                     </div>
@@ -392,7 +393,8 @@ aboutMe(){
                     : ""}
 
                 </div>
-                <div className="back face" style={{opacity: this.state.newCmdVis}}><img src="/img/cryptoPulse.png" className="image " alt="" /></div>   
+                <div className="back face" style={{opacity: this.state.newCmdVis}}><img src="/img/cryptoPulse.png" className="image " alt="" /></div>
+ 
                 </div>
                 </div>
 
