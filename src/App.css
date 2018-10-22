@@ -29,7 +29,6 @@
 /*  visibility: hidden;*/
 }
 
-
 .console {
 
   letter-spacing: 6px;
@@ -166,11 +165,9 @@ font-family: Gill Sans Extrabold, sans-serif;
 }
 #f1_container {
   perspective: 1000;
-  overflow-y: auto;
   background-color: black;
   opacity: .8;
-  padding-right: 0;
-  padding-left: 0;
+
 
 }
 #f1_card {
@@ -184,7 +181,6 @@ font-family: Gill Sans Extrabold, sans-serif;
 }
 
 .face {
-
   position: absolute;
   width: 100%;
   height: 100%;
