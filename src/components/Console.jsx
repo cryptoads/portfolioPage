@@ -371,8 +371,8 @@ aboutMe(){
                         </div>
                         </div>
                 <div className="col-lg-5 col-md-12 mr-auto " id={this.state.aboutme}>
-                <div id="f1_card">
-                <div className="face console2" style={{opacity: this.state.newCmdVis}} >
+                
+                <div className="console2" style={{opacity: this.state.newCmdVis}} >
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
@@ -392,9 +392,6 @@ aboutMe(){
 
                     : ""}
 
-                </div>
-                <div className="back face" style={{opacity: this.state.newCmdVis}}><img src="/img/cryptoPulse.png" className="image " alt="" /></div>
- 
                 </div>
                 </div>
 
