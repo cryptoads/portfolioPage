@@ -102,7 +102,6 @@ git(){
 }
 endLine(){
     this.setState({endLine:true})
-
 }
 
 projHolder(){
@@ -327,7 +326,7 @@ aboutMe(){
                 </div>
 
              
-            <div className="row mb-3 mt-5 justify-content-between">
+            <div className="row mb-3 mt-5 ">
                         <div className="col-lg-6 col-md-12 col-sm-12 ml-auto projHolder" style={this.state.projHolder}>
                         <div className="row justify-content-center">
 
@@ -344,7 +343,7 @@ aboutMe(){
                         </div>
 
                         <div className="col-lg-4 col-md-12 mt-5 media imgContain">
-                        <img src="/img/tagged.png" className="image align-self-end" alt="" />
+                        <img src="/img/tagged.png" className="image" alt="" />
                         
                         <div className="overlay">
                            <a href="https://taggedapp.herokuapp.com" target="_blank" rel="noopener noreferrer">  <div className="text">
