@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typist from 'react-typist';
 
 
+
 class Console extends Component {
     constructor(props){
     super(props)
@@ -32,6 +33,7 @@ class Console extends Component {
       github: false,
       projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
       aboutme: "console2",
+      show: false,
      
     }
   }
@@ -116,6 +118,13 @@ aboutMe(){
     this.setState({aboutme: "f1_container"})
 }
 
+showModal(){
+    this.setState({show:true})
+}
+
+hideModal(){
+    this.setState({show:false})
+}
 
 
  render(){
@@ -385,7 +394,8 @@ aboutMe(){
                     <Typist>
                     My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
                     <br />
-                    About me: <span onClick={this.aboutMe.bind(this)}> here </span>
+                    About me: <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
+
                     </Typist>
                     </div>
 
@@ -396,10 +406,31 @@ aboutMe(){
 
 
     </div>
+        <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
+          <p>Modal</p>
+          <p>Data</p>
+        </Modal>
+
     </div>
     
         )
  }
 }
+
+
+const Modal = ({ handleClose, show, children }) => {
+  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+
+  return (
+    <div className={showHideClassName}>
+      <section className='modal-main'>
+        {children}
+        <button onClick={handleClose}>
+          Close
+        </button>
+      </section>
+    </div>
+  );
+};
 
 export default Console;
