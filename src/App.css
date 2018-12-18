@@ -195,3 +195,19 @@ font-family: Gill Sans Extrabold, sans-serif;
   display: none;
 }
 
+.aboutMeImg {
+  height: 200px;
+  display: inline;
+}
+
+.aboutText {
+  top: 10px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 30px;
+}
+
+.aboutClose {
+  position: absolute;
+  right: 0px;
+}

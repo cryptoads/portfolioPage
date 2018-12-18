@@ -407,8 +407,17 @@ hideModal(){
 
     </div>
         <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
-          <p>Modal</p>
-          <p>Data</p>
+          <img className="aboutMeImg" src="/img/meonbike.jpg" alt="" />
+
+          <span className="aboutText">Things I like: 
+            <i className="aboutText fas fa-2x fa-hiking"> </i>
+            <i className="aboutText fas fa-2x fa-campground"> </i> 
+            <i className="aboutText fas fa-2x fa-bicycle"> </i> 
+            <i className="aboutText fas fa-2x fa-camera-retro"> </i>
+            <i className="aboutText fab fa-2x fa-d-and-d"> </i>
+            <i className="aboutText fab fa-2x fa-bitcoin"> </i>
+         </span>
+
         </Modal>
 
     </div>
@@ -425,7 +434,7 @@ const Modal = ({ handleClose, show, children }) => {
     <div className={showHideClassName}>
       <section className='modal-main'>
         {children}
-        <button onClick={handleClose}>
+        <button className="aboutClose" onClick={handleClose}>
           Close
         </button>
       </section>
