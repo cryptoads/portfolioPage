@@ -227,13 +227,14 @@ hideModal(){
                         <div className="col-lg-4 col-md-12 mt-5 media imgContain">
                         <img src="/img/tagged.png" className="image" alt="" />
                         
+                        <a href="https://taggedapp.herokuapp.com" target="_blank" rel="noopener noreferrer">
                         <div className="overlay">
-                           <a href="https://taggedapp.herokuapp.com" target="_blank" rel="noopener noreferrer">  <div className="text">
+                             <div className="text">
                             <p>Tagged</p>
                             <p>An app that gives your car an Inbox.  Messaging system using license plate numbers.</p>
                             <p>Built with HTML/CSS/NodeJS/Sequelize/Postgres/Express/AuthJS</p>
-                        </div></a>
                         </div>
+                        </div></a>
                         </div>
 
                         <div className="col-lg-4 col-md-12 mt-5 imgContain">
@@ -258,7 +259,7 @@ hideModal(){
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                     <br />
-                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    My Twitter: <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
                     <br />
                     About me: <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
                     </Typist>
@@ -276,15 +277,18 @@ hideModal(){
         <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
           <img className="aboutMeImg" src="/img/meonbike.jpg" alt="" />
 
-          <span className="aboutText">Things I like: 
+        <span className="aboutText mr-auto">Things I like:
+            <br />
             <i className="aboutText fas fa-2x fa-hiking"> </i>
             <i className="aboutText fas fa-2x fa-campground"> </i> 
             <i className="aboutText fas fa-2x fa-bicycle"> </i> 
             <i className="aboutText fas fa-2x fa-camera-retro"> </i>
             <i className="aboutText fab fa-2x fa-d-and-d"> </i>
             <i className="aboutText fab fa-2x fa-bitcoin"> </i>
-         </span>
-
+         
+            <br />
+            <span style={{color: this.state.color}}>Status:</span><span className="keyColor"> Employed</span>
+        </span>
         </Modal>
 
     </div>
@@ -302,11 +306,11 @@ const Modal = ({ handleClose, show, children }) => {
       <section className='modal-main'>
         {children}
         <button className="aboutClose" onClick={handleClose}>
-          Close
+          X
         </button>
       </section>
     </div>
   );
 };
 
-export default Console;
+export default Console; 

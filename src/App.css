@@ -173,7 +173,7 @@ font-family: Gill Sans Extrabold, sans-serif;
 }
 
 .modal-main {
-
+  max-width: 80vh;
   position:fixed;
   background-color: black;
   border: 2px solid gray;
@@ -214,5 +214,6 @@ font-family: Gill Sans Extrabold, sans-serif;
 
 .aboutClose {
   position: absolute;
+  top: 0px;
   right: 0px;
 }
