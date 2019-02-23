@@ -11,28 +11,15 @@ class Console extends Component {
       showName: {opacity: 0},
       name: false,
       color: "white",
-      codeColor: false,
       keyColor: false,
       keyClass: "generic",
       description: false,
       newCmd: false,
       fetch: false,
       newCmdVis: 0,
-      jsonRes:false,
-      location: false,
-      skillJson: false,
-      html: false,
-      css: false,
-      js: false,
-      node: false,
-      sql: false,
-      git: false,
-      react: false,
-      brack: false,
       endLine: false,
       github: false,
       projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
-      aboutme: "console2",
       show: false,
      
     }
@@ -52,13 +39,9 @@ showKeyColor(){
     this.setState({ keyClass: "keyColor", description: true})
 }
 
-codingStart(){
-    this.setState({codeColor : true})
-}
 
 scroller(){
-    document.getElementById("MyDivElement").scrollTop = 9999999;
-    
+    document.getElementById("MyDivElement").scrollTop = 9999999;   
 }
 
 nextCmd(){
@@ -69,39 +52,6 @@ fetch(){
     this.setState({fetch:true})
 }
 
-jsonRes(){
-    this.setState({jsonRes:true})
-}
-location(){
-    this.setState({location:true})
-}
-skillJson(){
-    this.setState({skillJson:true})
-}
-html(){
-    this.setState({html:true})
-}
-css(){
-    this.setState({css:true})
-}
-js(){
-    this.setState({js:true})
-}
-node(){
-    this.setState({node:true})
-}
-sql(){
-    this.setState({sql:true})
-}
-react(){
-    this.setState({react:true})
-}
-brack(){
-    this.setState({brack:true})
-}
-git(){
-    this.setState({git:true})
-}
 endLine(){
     this.setState({endLine:true})
 }
@@ -112,10 +62,6 @@ projHolder(){
 
 github(){
     this.setState({github:true})
-}
-
-aboutMe(){
-    this.setState({aboutme: "f1_container"})
 }
 
 showModal(){
@@ -150,24 +96,19 @@ hideModal(){
               <span> HELLO </span>
               <br />
                <Typist.Delay ms={500} />
-              <span>MY NAME IS CHRIS MICHELS</span> 
+                <span>MY NAME IS CHRIS MICHELS</span> 
+                <br />
+                <Typist.Delay ms={1500} />LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?
+                <Typist.Delay ms={1500} />
+
             </Typist>
 
 
 
-                {this.state.name ? 
-                    <div>
-                    <Typist onTypingDone={this.codingStart.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 100, element: '_' }}>
-                        <Typist.Delay ms={1500} />LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?
-                        <Typist.Delay ms={1500} />
-                        <br/ >
-                    </Typist> 
-                    </div>
-                    : 
-                    ""}
 
 
-                {this.state.codeColor ?
+
+                {this.state.name ?
                     <div className="code" style={{color: this.state.color}}> 
                         <Typist onTypingDone={this.showColor.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <br />
@@ -180,6 +121,7 @@ hideModal(){
                     <div className={this.state.keyClass} > 
                         <Typist onTypingDone={this.showKeyColor.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <span>.keyValues {keyValueString}</span>
+                        <br />
                         </Typist>
                         </div>
                  : ""}
@@ -189,131 +131,62 @@ hideModal(){
                     <div className="code generic"  style={{color: this.state.color}}> 
                         <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.fetch.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <br />
-                        <span>fetch('/aboutChris')</span> 
-                        </Typist>
-                    </div>
-                :""}
-
-                {this.state.fetch ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.jsonRes.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
+                        <span>fetch('/aboutChris')</span>
                         <span>{thefetch}</span> 
+                        <br /> 
                         <br />
-                        </Typist>
-                    </div>
-                : ""}    
-                     
-                {this.state.jsonRes ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.location.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
+                        <span>{bracket}</span>
                         <br />
-                        <span>{bracket}description:</span><span className="keyColor"> 'Full Stack Developer',</span>
+                        <span>description:</span><span className="keyColor"> 'Full Stack Developer',</span>
                         <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-                {this.state.location ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.skillJson.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
+                         <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
                         <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-
-                {this.state.skillJson ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.html.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <span>skills:</span>
                         <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-
-                {this.state.html ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.css.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">{bracket}HTML:</span><span className="keyColor"> true,</span>
+                        <span className="indent">{bracket}</span>
                         <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-
-                {this.state.css ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.js.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
+                        <span className="indent">HTML:</span>
+                        <span className="keyColor"> true,</span>
+                        <br />
                         <span className="indent">CSS:</span><span className="keyColor"> true,</span>
                         <br />
                         </Typist>
                     </div>
+                :""}
 
-                : ""}
 
-                {this.state.js ? 
+
+                {this.state.fetch ? 
                     <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.react.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
+                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.endLine.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <span className="indent">JS:</span><span className="keyColor"> true,</span>
+                        <br />
+                        <span className="indent">React:</span><span className="keyColor"> true,</span>
+                        <br />
+                        <span className="indent">NodeJS:</span><span className="keyColor"> true,</span>
+                        <br />
+                        <span className="indent">SQL:</span><span className="keyColor"> true,</span>
+                        <br />
+                        <span className="indent">Git:</span><span className="keyColor"> true,</span>
+                        <br />
+                        <span className="indent">}</span>
+                        <br />
+                        <span>}</span>
                         <br />
                         </Typist>
                     </div>
 
                 : ""}
                                 
-                {this.state.react ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.node.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">React:</span><span className="keyColor"> true,</span>
-                        <br />
-                        </Typist>
-                    </div>
 
-                : ""}
 
-                                {this.state.node ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.sql.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">NodeJS:</span><span className="keyColor"> true,</span>
-                        <br />
-                        </Typist>
-                    </div>
+     
 
-                : ""}
 
-                                {this.state.sql ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.git.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">SQL:</span><span className="keyColor"> true,</span>
-                        <br />
-                        </Typist>
-                    </div>
 
-                : ""}
-                                {this.state.git ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.brack.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">Git:</span><span className="keyColor"> true,</span>
-                        <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-                                {this.state.brack ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.endLine.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">}</span>
-                        <br />
-                        </Typist>
-                    </div>
-
-                : ""}
                 {this.state.endLine ? 
                     <div className="code generic"  style={{color: this.state.color}}> 
                         <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.nextCmd.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span>}</span>
                         <br />
                         <span style={{color: "white"}}>start contact.cmd</span>
                         </Typist>
@@ -384,22 +257,16 @@ hideModal(){
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                     My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
+                    <br />
+                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    <br />
+                    About me: <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
                     </Typist>
 
                     : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
 
  
-                {this.state.github ?
-                    <div >
-                    <Typist>
-                    My Twitter: <a href="https://twitter.com/CreekAddict" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
-                    <br />
-                    About me: <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
 
-                    </Typist>
-                    </div>
-
-                    : ""}
 
                 </div>
                 </div>
