@@ -21,6 +21,7 @@ class Console extends Component {
       github: false,
       projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
       show: false,
+      endline: false,
       comp: true,
      
     }
@@ -82,7 +83,14 @@ finish(){
         newCmdVis: .8,
         keyClass: "keyColor",
         color: "#50d8ec", 
-        })
+        fetch: false,
+        description: false,
+        name: false,
+        keyColor: false,
+        newCmd: false,
+        endLine: false
+        });
+    
 }
 
 
@@ -183,6 +191,7 @@ finish(){
                     <span>{prevProj}</span>
                     <br />
                 </div>
+                {this.scroller.bind(this)}
             </div> }
 
 
@@ -339,10 +348,9 @@ finish(){
                      <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
                     <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
                     </Typist>
-
                     : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
 
-                    
+
    
  
 
