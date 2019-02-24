@@ -21,6 +21,7 @@ class Console extends Component {
       github: false,
       projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
       show: false,
+      comp: true,
      
     }
   }
@@ -72,6 +73,18 @@ hideModal(){
     this.setState({show:false})
 }
 
+finish(){
+    this.setState({
+        comp:!this.state.comp, 
+        showName: {opacity: 1}, 
+        github: true,
+        projHolder: { visibility: 'visible', animation: 'fadein 2s linear', opacity: .8},
+        newCmdVis: .8,
+        keyClass: "keyColor",
+        color: "#50d8ec", 
+        })
+}
+
 
  render(){
     let thefetch= ".then(res()=>{res.json();})"
@@ -80,19 +93,25 @@ hideModal(){
     let bracket = "{"
     let prevProj = ".previousProjects { visibility: visible; }"
 
-    return (
+  return (
 
-       <div className="container-fluid">
-       <div className="row justify-content-between mb-5 toprow">
+
+
+       <div className="container-fluid" >
+        
+        <button onClick={this.finish.bind(this)}> Finish</button>
+         
+        <div className="row justify-content-between mb-5 toprow">
             <div className="col-lg-6 col-md-12 ml-auto">
-                <h1 className="victory" style={this.state.showName}><code> Chris Michels</code></h1>
+                <h1 className="victory" style={this.state.showName}><code>Chris Michels</code></h1>
+                
             </div>
             <div className="col-lg-5 col-md-12 mt-5 mr-auto ">
             <div className="console " id="MyDivElement">
 
 
-
-            <Typist onTypingDone={this.showName.bind(this)}  stdTypingDelay={50} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}> 
+             {this.state.comp ? 
+                <Typist onTypingDone={this.showName.bind(this)}  stdTypingDelay={50} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}> 
               <span> HELLO </span>
               <br />
                <Typist.Delay ms={500} />
@@ -101,21 +120,81 @@ hideModal(){
                 <Typist.Delay ms={1500} />LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?
                 <Typist.Delay ms={1500} />
 
-            </Typist>
+            </Typist> : 
+            <div>
+            <span>HELLO</span>
+            <br/>
+            <span>MY NAME IS CHRIS MICHELS</span> 
+            <br />
+            <span>LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?</span>
+            <br />
+                <div className="code" style={{color: this.state.color}}>           
+                    <br />
+                    <span>.code {colorString}</span>
+                </div>
+                <div className={this.state.keyClass} > 
+                    <span>.keyValues {keyValueString}</span>
+                    <br />
+                </div>
+                 <div className="code generic"  style={{color: this.state.color}}> 
+                    <br />
+                    <span>fetch('/aboutChris')</span>
+                    <span>{thefetch}</span> 
+                    <br /> 
+                    <br />
+                    <span>{bracket}</span>
+                    <br />
+                    <span>description:</span><span className="keyColor"> 'Full Stack Developer',</span>
+                    <br />
+                     <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
+                    <br />
+                    <span>skills:</span>
+                    <br />
+                    <span className="indent">{bracket}</span>
+                    <br />
+                    <span className="indent">HTML:</span>
+                    <span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">CSS:</span><span className="keyColor"> true,</span>
+                    <br />
+                </div>
+                <div className="code generic"  style={{color: this.state.color}}> 
+                    <span className="indent">JS:</span><span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">React:</span><span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">NodeJS:</span><span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">SQL:</span><span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">Git:</span><span className="keyColor"> true,</span>
+                    <br />
+                    <span className="indent">}</span>
+                    <br />
+                    <span>}</span>
+                    <br />
+                </div>
+                <div className="code generic"  style={{color: this.state.color}}> 
+                    <br />
+                    <span style={{color: "white"}}>start contact.cmd</span>
+                </div>
+                <div className="code generic"  style={{color: this.state.color}}> 
+                    <br />
+                    <span>{prevProj}</span>
+                    <br />
+                </div>
+            </div> }
 
 
-
-
-
-
-                {this.state.name ?
+                 {this.state.name ? 
                     <div className="code" style={{color: this.state.color}}> 
                         <Typist onTypingDone={this.showColor.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
                         <br />
                         <span>.code {colorString}</span>
                         </Typist>
                         </div>
-                : ""}
+                : ""} 
+               
 
                 {this.state.keyColor ?
                     <div className={this.state.keyClass} > 
@@ -180,7 +259,6 @@ hideModal(){
                                 
 
 
-     
 
 
 
@@ -257,15 +335,15 @@ hideModal(){
                 <div className="console2" style={{opacity: this.state.newCmdVis}} >
                 {this.state.newCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-                    My Github: <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
-                    <br />
-                    My Twitter: <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
-                    <br />
-                    About me: <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
+                     <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
+                     <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
+                    <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
                     </Typist>
 
                     : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
 
+                    
+   
  
 
 
@@ -273,7 +351,8 @@ hideModal(){
                 </div>
 
 
-    </div>
+    </div> 
+
         <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
           <img className="aboutMeImg" src="/img/meonbike.jpg" alt="" />
 
@@ -291,9 +370,13 @@ hideModal(){
         </span>
         </Modal>
 
-    </div>
+
+
+
+
+    </div> 
     
-        )
+        ) 
  }
 }
 

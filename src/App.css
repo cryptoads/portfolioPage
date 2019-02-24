@@ -61,18 +61,40 @@
 
 .victory {
   transition: 1.5s ease;
-
   font-weight: lighter; 
   opacity: 0;
   font-family: 'Permanent Marker', cursive;
   font-variant:small-caps;
-  font-size:8em;
+  font-size:7em;
   word-spacing: 0px;
+  white-space: normal;
+  overflow-wrap: normal;
   -webkit-transform: skew(-10deg,-10deg);
   background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+}
+
+
+@media screen and (max-width: 480px){
+  .victory {
+  transition: 1.5s ease;
+  font-weight: lighter; 
+  margin-left: 15px;
+  opacity: 0;
+  font-family: 'Permanent Marker', cursive;
+  font-variant:small-caps;
+  font-size:6em;
+  word-spacing: 0px;
+  white-space: normal;
+  overflow-wrap: normal;
+  -webkit-transform: skew(10deg,-10deg);
+  background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+}
 }
 
 .overlay {
