@@ -44,6 +44,23 @@
   border-top: 15px solid gray;
 }
 
+.fastFinish{
+  right: 15px;
+  top: 20px;
+  margin-top: -20px;
+  position: absolute;
+  height: 15px;
+  vertical-align: text-top;
+  width: 115px;
+}
+
+.finishSpan {
+  position: absolute;
+  right: 15px;
+  top:-6px;
+  vertical-align: text-bottom;
+  margin-bottom: 15px;
+}
 
 .console2 {
 

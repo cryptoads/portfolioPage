@@ -47,7 +47,7 @@ scroller(){
 }
 
 nextCmd(){
-    this.setState({newCmd: true, newCmdVis: .8})
+    this.setState({newCmd: true, nextCmd:true, newCmdVis: .8})
 }
 
 fetch(){
@@ -88,9 +88,10 @@ finish(){
         name: false,
         keyColor: false,
         newCmd: false,
-        endLine: false
+        endLine: false,
+        nextCmd: true
         });
-    
+    this.scroller()
 }
 
 
@@ -106,8 +107,6 @@ finish(){
 
 
        <div className="container-fluid" >
-        
-        <button onClick={this.finish.bind(this)}> Finish</button>
          
         <div className="row justify-content-between mb-5 toprow">
             <div className="col-lg-6 col-md-12 ml-auto">
@@ -116,6 +115,7 @@ finish(){
             </div>
             <div className="col-lg-5 col-md-12 mt-5 mr-auto ">
             <div className="console " id="MyDivElement">
+            <button className="fastFinish" onClick={this.finish.bind(this)}> <span className="finishSpan">HURRY UP</span></button>
 
 
              {this.state.comp ? 
@@ -191,7 +191,7 @@ finish(){
                     <span>{prevProj}</span>
                     <br />
                 </div>
-                {this.scroller.bind(this)}
+                
             </div> }
 
 
@@ -342,7 +342,7 @@ finish(){
                 <div className="col-lg-5 col-md-12 mr-auto " id={this.state.aboutme}>
                 
                 <div className="console2" style={{opacity: this.state.newCmdVis}} >
-                {this.state.newCmd ?
+                {this.state.nextCmd ?
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                      <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                      <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
