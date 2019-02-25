@@ -364,18 +364,19 @@ finish(){
         <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
           <img className="aboutMeImg" src="/img/meonbike.jpg" alt="" />
 
-        <span className="aboutText mr-auto">Things I like:
+        <span className="aboutThings">Things I like:</span>
             <br />
+            <div className="likeBox">
             <i className="aboutText fas fa-2x fa-hiking"> </i>
             <i className="aboutText fas fa-2x fa-campground"> </i> 
             <i className="aboutText fas fa-2x fa-bicycle"> </i> 
             <i className="aboutText fas fa-2x fa-camera-retro"> </i>
             <i className="aboutText fab fa-2x fa-d-and-d"> </i>
             <i className="aboutText fab fa-2x fa-bitcoin"> </i>
-         
+            </div>
             <br />
-            <span style={{color: this.state.color}}>Status:</span><span className="keyColor"> Employed</span>
-        </span>
+            <span style={{color: this.state.color}} className="aboutStatus">Status:</span><span className="keyColor"> Employed</span>
+        
         </Modal>
 
 

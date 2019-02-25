@@ -239,7 +239,7 @@ font-family: Gill Sans Extrabold, sans-serif;
   width: 200px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -50px;
+  margin-top: -55px;
   display: block;
   
 }
@@ -249,6 +249,31 @@ font-family: Gill Sans Extrabold, sans-serif;
   padding-left: 1.5em;
   padding-right: 1.5em;
   padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.aboutStatus {
+  padding-left: 1.5em;
+  padding-top: 30px;
+}
+
+.aboutThings {
+position: relative;
+float: left;
+
+left: 50%;
+transform: translate(-50%, -10%);
+}
+
+.likeBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid gray;
 }
 
 .aboutClose {
