@@ -346,7 +346,7 @@ finish(){
                     <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
                      <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
                      <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
-                    <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut"></i> </span>
+                    <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut astro"></i> </span>
                     </Typist>
                     : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
 
@@ -373,6 +373,7 @@ finish(){
             <i className="aboutText fas fa-2x fa-camera-retro"> </i>
             <i className="aboutText fab fa-2x fa-d-and-d"> </i>
             <i className="aboutText fab fa-2x fa-bitcoin"> </i>
+
             </div>
             <br />
             <span style={{color: this.state.color}} className="aboutStatus">Status:</span><span className="keyColor"> Employed</span>

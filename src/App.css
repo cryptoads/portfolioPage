@@ -73,8 +73,20 @@
   overflow-y: auto;
   color: white;
   border-top: 15px solid gray;
+
 }
 
+.console2 a {
+  color: white;
+}
+
+.console2 a:link {
+  text-decoration: none;
+}
+
+.astro:hover {
+  cursor: pointer;
+}
 
 .victory {
   transition: 1.5s ease;
@@ -212,13 +224,14 @@ font-family: Gill Sans Extrabold, sans-serif;
 }
 
 .modal-main {
-  max-width: 80vh;
+  max-width: 80%;
   position:fixed;
   background-color: black;
   border: 2px solid gray;
   opacity: .8;
-  width: 80%;
-  height: auto;
+/*  width: auto;
+  height: auto;*/
+
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
@@ -252,6 +265,8 @@ font-family: Gill Sans Extrabold, sans-serif;
   padding-bottom: 30px;
 }
 
+
+
 .aboutStatus {
   padding-left: 1.5em;
   padding-top: 30px;
@@ -260,7 +275,6 @@ font-family: Gill Sans Extrabold, sans-serif;
 .aboutThings {
 position: relative;
 float: left;
-
 left: 50%;
 transform: translate(-50%, -10%);
 }
@@ -271,6 +285,7 @@ transform: translate(-50%, -10%);
   justify-content: center;
   align-content: space-around;
   width: 80%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid gray;
@@ -280,4 +295,76 @@ transform: translate(-50%, -10%);
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+@media screen and (max-width: 750px){
+.aboutText {
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.modal-main {
+  width: 95%;
+  position:fixed;
+  background-color: black;
+  border: 2px solid gray;
+  opacity: .8;
+
+  height: 80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.likeBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: 60%;
+  overflow: scroll;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid grey;
+}
+ 
+
+}
+
+@media screen and (max-height: 450px){
+
+.modal-main {
+  width: 95%;
+  position:fixed;
+  background-color: black;
+  border: 2px solid gray;
+  opacity: .8;
+  height: 80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.aboutText {
+  display: flex;
+  align-self: flex-end;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.likeBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  max-height: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2px;
+  border: 2px solid grey;
+}
+
 }
