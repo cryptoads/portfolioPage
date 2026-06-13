@@ -1,409 +1,156 @@
 import React, { Component } from 'react';
-import Typist from 'react-typist';
 
-
+const COMMANDS = {
+  help: [
+    'Available commands:',
+    '  whoami     print identity',
+    '  status     show current signal',
+    '  links      open external channels',
+    '  clear      reset terminal'
+  ],
+  whoami: [
+    'Chris Michels',
+    'Builder. Operator. Systems-minded human.',
+    'This node is intentionally minimal.'
+  ],
+  status: [
+    'mode: low-noise',
+    'focus: useful interfaces, sharp tooling, durable ideas',
+    'signal: online'
+  ],
+  links: [
+    'github:  https://github.com/cryptoads',
+    'twitter: https://twitter.com/ellipticswerve'
+  ]
+};
 
 class Console extends Component {
-    constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
-    this.state= {
-      showName: {opacity: 0},
-      name: false,
-      color: "white",
-      keyColor: false,
-      keyClass: "generic",
-      description: false,
-      newCmd: false,
-      fetch: false,
-      newCmdVis: 0,
-      endLine: false,
-      github: false,
-      projHolder: {visibility: 'hidden', animation: 'fadein 1s linear', opacity: 0},
-      show: false,
-      endline: false,
-      comp: true,
-     
+    this.state = {
+      history: [
+        { type: 'system', text: 'CHRIS_MICHELS://terminal' },
+        { type: 'system', text: 'interface loaded' },
+        { type: 'system', text: 'type help and press enter' }
+      ],
+      input: ''
+    };
+
+    this.terminalRef = null;
+  }
+
+  componentDidUpdate() {
+    if (this.terminalRef) {
+      this.terminalRef.scrollTop = this.terminalRef.scrollHeight;
     }
   }
 
- 
-showName(){
-    this.setState({ showName: {opacity: 1}, name: true})
-}
+  setTerminalRef(element) {
+    this.terminalRef = element;
+  }
 
-showColor(){
-    this.setState({ color: "#50d8ec", keyColor: true})
+  handleInputChange(event) {
+    this.setState({ input: event.target.value });
+  }
 
-}
+  handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.runCommand();
+    }
+  }
 
-showKeyColor(){
-    this.setState({ keyClass: "keyColor", description: true})
-}
+  runCommand() {
+    const rawCommand = this.state.input.trim();
+    const command = rawCommand.toLowerCase();
 
+    if (!rawCommand) {
+      return;
+    }
 
-scroller(){
-    document.getElementById("MyDivElement").scrollTop = 9999999;   
-}
+    if (command === 'clear') {
+      this.setState({
+        history: [{ type: 'system', text: 'terminal cleared' }],
+        input: ''
+      });
+      return;
+    }
 
-nextCmd(){
-    this.setState({newCmd: true, nextCmd:true, newCmdVis: .8})
-}
+    const output = COMMANDS[command] || [
+      'command not found: ' + rawCommand,
+      'type help for available commands'
+    ];
 
-fetch(){
-    this.setState({fetch:true})
-}
-
-endLine(){
-    this.setState({endLine:true})
-}
-
-projHolder(){
-    this.setState({projHolder: { visibility: 'visible', animation: 'fadein 2s linear', opacity: .8}})
-}
-
-github(){
-    this.setState({github:true})
-}
-
-showModal(){
-    this.setState({show:true})
-}
-
-hideModal(){
-    this.setState({show:false})
-}
-
-finish(){
     this.setState({
-        comp:!this.state.comp, 
-        showName: {opacity: 1}, 
-        github: true,
-        projHolder: { visibility: 'visible', animation: 'fadein 2s linear', opacity: .8},
-        newCmdVis: .8,
-        keyClass: "keyColor",
-        color: "#50d8ec", 
-        fetch: false,
-        description: false,
-        name: false,
-        keyColor: false,
-        newCmd: false,
-        endLine: false,
-        nextCmd: true
-        });
-    this.scroller()
+      history: this.state.history.concat(
+        { type: 'command', text: rawCommand },
+        output.map(function(line) {
+          return { type: 'output', text: line };
+        })
+      ),
+      input: ''
+    });
+  }
+
+  focusInput() {
+    if (this.inputRef) {
+      this.inputRef.focus();
+    }
+  }
+
+  renderHistoryLine(line, index) {
+    if (line.type === 'command') {
+      return (
+        <div className="terminal-line terminal-command" key={index}>
+          <span className="prompt">chris@portfolio:~$</span>
+          <span>{line.text}</span>
+        </div>
+      );
+    }
+
+    return (
+      <div className={'terminal-line terminal-' + line.type} key={index}>
+        {line.text || '\u00a0'}
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <main className="terminal-page">
+        <section className="terminal-shell" onClick={this.focusInput.bind(this)}>
+          <header className="terminal-header">
+            <div className="terminal-controls" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span className="terminal-title">chris.michels</span>
+            <span className="terminal-status">online</span>
+          </header>
+
+          <div className="terminal-body" ref={this.setTerminalRef.bind(this)}>
+            {this.state.history.map(this.renderHistoryLine.bind(this))}
+
+            <div className="terminal-line terminal-input-row">
+              <label className="prompt" htmlFor="terminal-input">chris@portfolio:~$</label>
+              <input
+                id="terminal-input"
+                ref={function(input) { this.inputRef = input; }.bind(this)}
+                value={this.state.input}
+                onChange={this.handleInputChange.bind(this)}
+                onKeyDown={this.handleKeyDown.bind(this)}
+                autoComplete="off"
+                autoFocus
+                spellCheck="false"
+                aria-label="Terminal command"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
 }
 
-
- render(){
-    let thefetch= ".then(res()=>{res.json();})"
-    let colorString = "{ color: #50d8ec; }";
-    let keyValueString = "{ color: #f008b7; }"
-    let bracket = "{"
-    let prevProj = ".previousProjects { visibility: visible; }"
-
-  return (
-
-
-
-       <div className="container-fluid" >
-         
-        <div className="row justify-content-between mb-5 toprow">
-            <div className="col-lg-6 col-md-12 ml-auto">
-                <h1 className="victory" style={this.state.showName}><code>Chris Michels</code></h1>
-                
-            </div>
-            <div className="col-lg-5 col-md-12 mt-5 mr-auto ">
-            <div className="console " id="MyDivElement">
-            <button className="fastFinish" onClick={this.finish.bind(this)}> <span className="finishSpan">HURRY UP</span></button>
-
-
-             {this.state.comp ? 
-                <Typist onTypingDone={this.showName.bind(this)}  stdTypingDelay={50} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}> 
-              <span> HELLO </span>
-              <br />
-               <Typist.Delay ms={500} />
-                <span>MY NAME IS CHRIS MICHELS</span> 
-                <br />
-                <Typist.Delay ms={1500} />LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?
-                <Typist.Delay ms={1500} />
-
-            </Typist> : 
-            <div>
-            <span>HELLO</span>
-            <br/>
-            <span>MY NAME IS CHRIS MICHELS</span> 
-            <br />
-            <span>LET'S TALK ABOUT ME, THAT'S WHY YOU ARE HERE, RIGHT?</span>
-            <br />
-                <div className="code" style={{color: this.state.color}}>           
-                    <br />
-                    <span>.code {colorString}</span>
-                </div>
-                <div className={this.state.keyClass} > 
-                    <span>.keyValues {keyValueString}</span>
-                    <br />
-                </div>
-                 <div className="code generic"  style={{color: this.state.color}}> 
-                    <br />
-                    <span>fetch('/aboutChris')</span>
-                    <span>{thefetch}</span> 
-                    <br /> 
-                    <br />
-                    <span>{bracket}</span>
-                    <br />
-                    <span>description:</span><span className="keyColor"> 'Full Stack Developer',</span>
-                    <br />
-                     <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
-                    <br />
-                    <span>skills:</span>
-                    <br />
-                    <span className="indent">{bracket}</span>
-                    <br />
-                    <span className="indent">HTML:</span>
-                    <span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">CSS:</span><span className="keyColor"> true,</span>
-                    <br />
-                </div>
-                <div className="code generic"  style={{color: this.state.color}}> 
-                    <span className="indent">JS:</span><span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">React:</span><span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">NodeJS:</span><span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">SQL:</span><span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">Git:</span><span className="keyColor"> true,</span>
-                    <br />
-                    <span className="indent">}</span>
-                    <br />
-                    <span>}</span>
-                    <br />
-                </div>
-                <div className="code generic"  style={{color: this.state.color}}> 
-                    <br />
-                    <span style={{color: "white"}}>start contact.cmd</span>
-                </div>
-                <div className="code generic"  style={{color: this.state.color}}> 
-                    <br />
-                    <span>{prevProj}</span>
-                    <br />
-                </div>
-                
-            </div> }
-
-
-                 {this.state.name ? 
-                    <div className="code" style={{color: this.state.color}}> 
-                        <Typist onTypingDone={this.showColor.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <br />
-                        <span>.code {colorString}</span>
-                        </Typist>
-                        </div>
-                : ""} 
-               
-
-                {this.state.keyColor ?
-                    <div className={this.state.keyClass} > 
-                        <Typist onTypingDone={this.showKeyColor.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span>.keyValues {keyValueString}</span>
-                        <br />
-                        </Typist>
-                        </div>
-                 : ""}
-
-
-                {this.state.description ?
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.fetch.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <br />
-                        <span>fetch('/aboutChris')</span>
-                        <span>{thefetch}</span> 
-                        <br /> 
-                        <br />
-                        <span>{bracket}</span>
-                        <br />
-                        <span>description:</span><span className="keyColor"> 'Full Stack Developer',</span>
-                        <br />
-                         <span>location:</span><span className="keyColor"> 'Atlanta, GA',</span>
-                        <br />
-                        <span>skills:</span>
-                        <br />
-                        <span className="indent">{bracket}</span>
-                        <br />
-                        <span className="indent">HTML:</span>
-                        <span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">CSS:</span><span className="keyColor"> true,</span>
-                        <br />
-                        </Typist>
-                    </div>
-                :""}
-
-
-
-                {this.state.fetch ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onLineTyped={this.scroller.bind(this)} onTypingDone={this.endLine.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <span className="indent">JS:</span><span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">React:</span><span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">NodeJS:</span><span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">SQL:</span><span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">Git:</span><span className="keyColor"> true,</span>
-                        <br />
-                        <span className="indent">}</span>
-                        <br />
-                        <span>}</span>
-                        <br />
-                        </Typist>
-                    </div>
-
-                : ""}
-                                
-
-
-
-
-
-                {this.state.endLine ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.nextCmd.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0, element: '_' }}>
-                        <br />
-                        <span style={{color: "white"}}>start contact.cmd</span>
-                        </Typist>
-                    </div>
-
-                : ""}
-                {this.state.newCmd ? 
-                    <div className="code generic"  style={{color: this.state.color}}> 
-                        <Typist onCharacterTyped={this.scroller.bind(this)} onTypingDone={this.projHolder.bind(this)} cursor={{ element: '_' }}>
-                        <br />
-                        <Typist.Delay ms={1500} /> 
-                        <span>{prevProj}</span>
-                        <br />
-                        </Typist>
-                    </div>
-                    :""}
-                </div>
-                </div>
-                </div>
-
-             
-            <div className="row mb-3 mt-5 ">
-                        <div className="col-lg-6 col-md-12 col-sm-12 ml-auto projHolder" style={this.state.projHolder}>
-                        <div className="row justify-content-center">
-
-                        <div className="col-lg-4 col-md-12 mt-5 imgContain">
-                        <img src="/img/crbn.png" className="image" alt="" />
-                        <a href="https://crbnapp.herokuapp.com" target="_blank" rel="noopener noreferrer"> 
-                        <div className="overlay">
-                            <div className="text">
-                            <p>CRBN</p>
-                            <p>An app that gives a Carbon emissions score based on some lifestyle factors, and allows you to offset emissions through attending community events.</p>
-                            <p>Built with HTML/CSS/NodeJS/Sequelize/Postgres/Express/React/AuthJS/ChartJS</p>
-                        </div>
-                        </div></a>
-                        </div>
-
-                        <div className="col-lg-4 col-md-12 mt-5 media imgContain">
-                        <img src="/img/tagged.png" className="image" alt="" />
-                        
-                        <a href="https://taggedapp.herokuapp.com" target="_blank" rel="noopener noreferrer">
-                        <div className="overlay">
-                             <div className="text">
-                            <p>Tagged</p>
-                            <p>An app that gives your car an Inbox.  Messaging system using license plate numbers.</p>
-                            <p>Built with HTML/CSS/NodeJS/Sequelize/Postgres/Express/AuthJS</p>
-                        </div>
-                        </div></a>
-                        </div>
-
-                        <div className="col-lg-4 col-md-12 mt-5 imgContain">
-                        <img src="/img/cryptoPulse.png" className="image " alt="" />
-                        <a href="https://eloquent-khorana-9548ca.netlify.com/index.html" target="_blank" rel="noopener noreferrer"> 
-                        <div className="overlay">
-                            <div className="text">
-                            <p>CryptoPulse</p>
-                            <p>A crypto charting application.</p>
-                            <p>Built with HTML/CSS/JQuery/Ajax/ChartJS/Firebase</p>
-
-                        </div>
-                        </div></a>
-                        </div>
-
-                        </div>
-                        </div>
-                <div className="col-lg-5 col-md-12 mr-auto " id={this.state.aboutme}>
-                
-                <div className="console2" style={{opacity: this.state.newCmdVis}} >
-                {this.state.nextCmd ?
-                    <Typist onTypingDone={this.github.bind(this)} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-                     <a href="https://github.com/cryptoads" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-github"></i> </a>
-                     <a href="https://twitter.com/ellipticswerve" target="_blank" rel="noopener noreferrer"><i className="fab fa-2x fa-twitter-square"></i> </a>
-                    <span onClick={this.showModal.bind(this)}><i className="fas fa-2x fa-user-astronaut astro"></i> </span>
-                    </Typist>
-                    : <div className="col-lg-5 col-md-12 mr-auto "><div className="console2" style={{opacity: 0}}></div></div>}
-
-
-   
- 
-
-
-                </div>
-                </div>
-
-
-    </div> 
-
-        <Modal show={this.state.show} handleClose={this.hideModal.bind(this)} >
-          <img className="aboutMeImg" src="/img/meonbike.jpg" alt="" />
-
-        <span className="aboutThings">Things I like:</span>
-            <br />
-            <div className="likeBox">
-            <i className="aboutText fas fa-2x fa-hiking"> </i>
-            <i className="aboutText fas fa-2x fa-campground"> </i> 
-            <i className="aboutText fas fa-2x fa-bicycle"> </i> 
-            <i className="aboutText fas fa-2x fa-camera-retro"> </i>
-            <i className="aboutText fab fa-2x fa-d-and-d"> </i>
-            <i className="aboutText fab fa-2x fa-bitcoin"> </i>
-
-            </div>
-            <br />
-            <span style={{color: this.state.color}} className="aboutStatus">Status:</span><span className="keyColor"> Employed</span>
-        
-        </Modal>
-
-
-
-
-
-    </div> 
-    
-        ) 
- }
-}
-
-
-const Modal = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-
-  return (
-    <div className={showHideClassName}>
-      <section className='modal-main'>
-        {children}
-        <button className="aboutClose" onClick={handleClose}>
-          X
-        </button>
-      </section>
-    </div>
-  );
-};
-
-export default Console; 
+export default Console;

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "npm": "6.2.0",
-    "node": "8.11.1"
+    "npm": "11.x",
+    "node": "24.x"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -14,8 +14,10 @@
     "react-typist": "^2.0.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
+    "heroku-postbuild": "node scripts/heroku-build.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
