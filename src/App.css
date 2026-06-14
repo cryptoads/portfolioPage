@@ -126,6 +126,18 @@
   color: var(--text);
 }
 
+.terminal-output a {
+  color: var(--line);
+  text-decoration: none;
+}
+
+.terminal-output a:hover,
+.terminal-output a:focus {
+  color: var(--green);
+  outline: 0;
+  text-shadow: 0 0 12px rgba(124, 255, 196, 0.32);
+}
+
 .terminal-command {
   color: var(--hot);
   margin-top: 12px;
@@ -166,6 +178,215 @@
   color: var(--bg);
 }
 
+.signal-window {
+  background: rgba(3, 6, 12, 0.96);
+  border: 1px solid var(--hot-soft);
+  box-shadow:
+    0 0 28px rgba(255, 43, 214, 0.18),
+    inset 0 0 28px rgba(30, 232, 255, 0.04);
+  color: var(--text);
+  font-family: Consolas, 'Courier New', monospace;
+  left: 0;
+  max-width: calc(100vw - 36px);
+  min-height: 250px;
+  position: fixed;
+  top: 0;
+  width: 390px;
+  z-index: 4;
+}
+
+.signal-header {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 43, 214, 0.24);
+  color: var(--hot);
+  cursor: move;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  letter-spacing: 2px;
+  min-height: 34px;
+  padding: 0 12px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.signal-header button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 2px 4px;
+}
+
+.signal-header button:hover,
+.signal-header button:focus {
+  color: var(--green);
+  outline: 0;
+}
+
+.signal-body {
+  font-size: 13px;
+  line-height: 1.55;
+  max-height: 330px;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.signal-line {
+  min-height: 20px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.signal-system {
+  color: var(--line);
+}
+
+.signal-output {
+  color: var(--text);
+}
+
+.signal-command {
+  color: var(--hot);
+  margin-top: 8px;
+}
+
+.signal-loader {
+  color: var(--green);
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  text-shadow: 0 0 12px rgba(124, 255, 196, 0.28);
+}
+
+.signal-bitcoin-warning,
+.signal-bitcoin-field,
+.signal-bitcoin-address {
+  border-left: 2px solid var(--line-soft);
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 7px 9px;
+}
+
+.signal-bitcoin-warning {
+  border-left-color: var(--hot);
+  color: var(--hot);
+  text-transform: uppercase;
+}
+
+.signal-bitcoin-field {
+  background: rgba(30, 232, 255, 0.04);
+}
+
+.signal-bitcoin-address {
+  background: rgba(124, 255, 196, 0.08);
+  border-left-color: var(--green);
+  color: var(--green);
+}
+
+.signal-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.signal-value {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.signal-input-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.signal-input-row label {
+  color: var(--green);
+  flex: 0 0 auto;
+}
+
+#signal-input {
+  background: transparent;
+  border: 0;
+  caret-color: var(--hot);
+  color: var(--text);
+  flex: 1 1 auto;
+  font: inherit;
+  min-width: 80px;
+  outline: 0;
+  padding: 0;
+}
+
+.matrix-rain {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(124, 255, 196, 0.12), transparent 28%),
+    rgba(0, 0, 0, 0.98);
+  bottom: 0;
+  color: var(--green);
+  font-family: Consolas, 'Courier New', monospace;
+  left: 0;
+  line-height: 1;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+  animation: matrix-takeover 2.4s ease forwards;
+}
+
+.matrix-rain span {
+  animation-name: matrix-drop;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  color: #9dffd5;
+  position: absolute;
+  text-shadow:
+    0 0 7px rgba(124, 255, 196, 0.85),
+    0 0 18px rgba(30, 232, 255, 0.25);
+  top: -130vh;
+  transform: translateY(0);
+  writing-mode: vertical-rl;
+}
+
+.matrix-rain span:nth-child(3n) {
+  color: #d8fff0;
+}
+
+.matrix-rain span:nth-child(4n) {
+  filter: blur(0.7px);
+}
+
+@keyframes matrix-takeover {
+  0% {
+    opacity: 0;
+  }
+  16% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes matrix-drop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(260vh);
+  }
+}
+
 @media screen and (max-width: 720px) {
   .terminal-page {
     align-items: stretch;
@@ -196,5 +417,11 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 2px;
+  }
+
+  .signal-window {
+    left: 0;
+    top: 0;
+    width: calc(100vw - 36px);
   }
 }
